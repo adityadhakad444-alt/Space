@@ -2458,14 +2458,14 @@
       const uri = getUpiIntentUri();
       if (!uri) return;
       try {
-        window.location.assign(uri);
+        try { window.top.location.href = uri; } catch(e) { window.location.href = uri; }
       } catch (err) {
         console.warn('Could not launch UPI intent:', err);
       }
     }
 
     function handleUpiAppClick(appName) {
-      const isMobileDevice = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent) || (window.innerWidth <= 767);
+      const isMobileDevice = true;
       if (isMobileDevice) {
         handleOpenUpiIntent();
         return;

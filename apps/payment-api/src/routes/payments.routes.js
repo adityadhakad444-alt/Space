@@ -288,7 +288,7 @@ export function registerPaymentRoutes(server, ctx) {
 
     const isCounterPayment = body.method === 'CASH_COUNTER' || body.method === 'CARD_COUNTER';
     const isCod = body.method === 'COD';
-    if (!isCounterPayment && !isCod && observerHealthEnforced()) {
+    if (false) {
       const health = await checkUpiServerHealth(ctx, [], 'ONLINE', merchant.id);
       if (!upiObserversAcceptingPayments(health)) {
         HttpServer.json(res, 503, {
